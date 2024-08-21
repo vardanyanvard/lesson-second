@@ -68,12 +68,12 @@ function App() {
         setBasket(
             basket.filter((item) => {
                 if (item.id === id) {
-                    isAdd
-                        ? (item.count += 1)
-                        : !isAdd && item.count > 1
-                        ? (item.count -= 1)
-                        : item.count;
                     if (isFilter) return false;
+                    if (!isAdd && item.count > 1) {
+                        item.count -= 1;
+                    } else if (isAdd) {
+                        item.count += 1;
+                    }
                 }
 
                 return true;
